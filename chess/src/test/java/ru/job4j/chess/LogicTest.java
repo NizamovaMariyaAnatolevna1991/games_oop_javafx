@@ -16,7 +16,7 @@ public class LogicTest {
 
     public void setUp() {
         logic = new Logic();
-        logic.clean(); // Очищаем доску перед каждым тестом
+        logic.clean();
     }
 
     @Test
