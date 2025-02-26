@@ -14,10 +14,18 @@ public final class Logic {
 
     public void move(Cell source, Cell dest)
             throws FigureNotFoundException, ImpossibleMoveException, OccupiedCellException {
-        if (source == null || source.getX() < 1 || source.getX() > 8 || source.getY() < 1 || source.getY() > 8) {
+        if (source == null ||
+                source.getX() < 1 ||
+                source.getX() > 8 ||
+                source.getY() < 1 ||
+                source.getY() > 8) {
             throw new IllegalArgumentException("Invalid source cell: " + source);
         }
-        if (dest == null || dest.getX() < 1 || dest.getX() > 8 || dest.getY() < 1 || dest.getY() > 8) {
+        if (dest == null ||
+                dest.getX() < 1 ||
+                dest.getX() > 8 ||
+                dest.getY() < 1 ||
+                dest.getY() > 8) {
             throw new IllegalArgumentException("Invalid destination cell: " + dest);
         }
 

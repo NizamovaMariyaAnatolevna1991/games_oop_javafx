@@ -40,6 +40,7 @@ class BishopBlackTest {
             bishopBlack.way(destination);
         });
 
-        org.hamcrest.MatcherAssert.assertThat(exception.getMessage(), containsString("Could not move by diagonal from C3 to D3"));
+        org.hamcrest.MatcherAssert.assertThat(exception.getMessage(),
+                containsString("Could not move by diagonal from C3 to D3"));
     }
 }

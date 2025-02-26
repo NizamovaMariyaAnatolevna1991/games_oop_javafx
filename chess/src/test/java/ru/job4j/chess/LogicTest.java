@@ -39,6 +39,7 @@ public class LogicTest {
         assertArrayEquals(expected, steps);
 
     }
+
     @Test
     void whenMoveNotDiagonalThenThrowException() {
         BishopBlack bishop = new BishopBlack(Cell.C1);
