@@ -38,7 +38,6 @@ public class BishopBlack implements Figure {
             y += deltaY;
             steps[index] = Cell.findBy(x, y);
         }
-
         return steps;
     }
 
