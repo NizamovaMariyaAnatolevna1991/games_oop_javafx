@@ -37,21 +37,13 @@ public class BishopBlack implements Figure {
             x += deltaX;
             y += deltaY;
             steps[index] = Cell.findBy(x, y);
-            if (steps[index] == null) {
-                throw new ImpossibleMoveException("Invalid cell on the way");
-            }
         }
 
         return steps;
     }
 
     public boolean isDiagonal(Cell source, Cell dest) {
-        if (source == null || dest == null) {
-            return false;
-        }
-        int dx = Math.abs(dest.getX() - source.getX());
-        int dy = Math.abs(dest.getY() - source.getY());
-        return dx == dy;
+        return Math.abs(dest.getX() - source.getX()) == Math.abs(dest.getY() - source.getY());
     }
 
     @Override

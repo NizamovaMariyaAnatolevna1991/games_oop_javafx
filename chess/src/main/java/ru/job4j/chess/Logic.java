@@ -14,44 +14,19 @@ public final class Logic {
 
     public void move(Cell source, Cell dest)
             throws FigureNotFoundException, ImpossibleMoveException, OccupiedCellException {
-        if (source == null
-                || source.getX() < 1
-                || source.getX() > 8
-                || source.getY() < 1
-                || source.getY() > 8) {
-            throw new IllegalArgumentException("Invalid source cell: " + source);
-        }
-        if (dest == null
-                || dest.getX() < 1
-                || dest.getX() > 8
-                || dest.getY() < 1
-                || dest.getY() > 8) {
-            throw new IllegalArgumentException("Invalid destination cell: " + dest);
-        }
-
         int index = findBy(source);
-
         Cell[] steps = figures[index].way(dest);
-        if (steps == null || steps.length == 0) {
-            throw new ImpossibleMoveException("No way found from " + source + " to " + dest);
-        }
-
-        if (findBy(dest) != -1) {
-            throw new OccupiedCellException();
-        }
-
         free(steps);
-
         figures[index] = figures[index].copy(dest);
     }
 
-    private boolean free(Cell[] steps) throws OccupiedCellException, FigureNotFoundException {
-        if (steps == null || steps.length == 0) {
-            throw new ImpossibleMoveException("No steps provided for the move.");
-        }
+    private boolean free(Cell[] steps) throws OccupiedCellException {
         for (Cell step : steps) {
-            if (findBy(step) != -1) {
-                throw new OccupiedCellException();
+            for (int i = 0; i < index; i++) {
+                Figure figure = figures[i];
+                if (figure != null && figure.position().equals(step)) {
+                    throw new OccupiedCellException();
+                }
             }
         }
         return true;
